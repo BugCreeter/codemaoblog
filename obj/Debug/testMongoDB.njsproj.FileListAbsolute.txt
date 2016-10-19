@@ -1,0 +1,2 @@
+P:\LearningObject\cs\testMongoDB\testMongoDB\obj\Debug\testMongoDB.njsprojResolveAssemblyReference.cache
+P:\LearningObject\cs\testMongoDB\testMongoDB\bin\Microsoft.NodejsTools.WebRole.dll

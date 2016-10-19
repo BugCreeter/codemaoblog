@@ -1,0 +1,22 @@
+﻿extends layout
+block main
+  .page-header
+    h1 发布文章
+      h3（请使用
+        a(href='http://www.jianshu.com/p/q81RER') Markdown
+        语法）
+  form.form-horizontal(method='post',action='upload')
+    fieldset
+      input.hidden(name='type',value='article')
+      p 标题
+      label
+        input.adapt(name='title',type='text')
+      br
+      p 正文
+      textarea.form-control.adapt(name='content',rows='30')
+      p 标签
+      label
+        input.adapt(name='tag',type='text')
+      br
+      br
+      input.btn(id='postBtn',type='button',value='提交')

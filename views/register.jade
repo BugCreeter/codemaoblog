@@ -1,0 +1,20 @@
+﻿extends layout
+block main
+  form.form-horizontal(action='register',method='post')
+    .control-group
+      label.control-label(for='registerEmail') 注册邮箱
+      .controls
+        input(name='mail',id='registerEmail',type='text')
+    .control-group
+      label.control-label(for='registerName') 用户名
+      .controls
+        input(name='name',id='registerName',type='text')
+    .control-group
+      label.control-label(for='registerPassword') 密码
+      .controls
+        input(name='pass',id='registerPassword',type='password')
+    .control-group
+      label.control-label(for='registerPassword2') 确认密码
+      .controls
+        input(id='registerPassword2',type='password')
+    input.btn(id='registerBtn',type='button',value='注册')

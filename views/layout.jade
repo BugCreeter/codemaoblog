@@ -1,0 +1,128 @@
+﻿block content
+  doctype html
+  html
+    head
+      title= data.title
+      link(rel='stylesheet', href='/stylesheets/style.css')
+      link(rel='stylesheet', href='/stylesheets/bootstrap-combined.2.3.1.min.css')
+      link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+      link(rel='stylesheet', href='/stylesheets/custom.css')
+      script(src='/javascripts/jquery-2.0.0.min.js')
+      script(src='/javascripts/bootstrap.min.js')
+    body
+      .container-fluid
+      .row-fluid
+          .span12
+            block data.msg
+              - if (data.msg !== undefined && data.msg.length !== 0)
+                .alert
+                  button.close(data-dismiss='alert',type='button') x
+                  h4 提示！
+                  strong #{data.msg}
+            img.img-rounded(alt='140x140', src='/images/logo.png')
+            .navbar
+              .navbar-inner
+                .container-fluid
+                  a.btn.btn-navbar.collapsed(data-target='.navbar-responsive-collapse', data-toggle='collapse')
+                  a.brand(href='/') 编程猫
+                  .nav-collapse.navbar-responsive-collapse.collapse
+                    ul.nav
+                      li
+                        a(href='/') 主页
+                      li
+                        a(href='about') 关于
+                    ul.nav.pull-right
+                      li.dropdown
+                        a.dropdown-toggle(data-toggle='dropdown', href='#') 更多
+                          strong.caret
+                        ul.dropdown-menu
+                          li
+                            a 然而并没有更多
+                          li
+                            a 我只是多试几个组件玩
+                          li
+                            a 不过下面的标签是可以用的
+                          li.divider
+                          li.nav-header 标签
+                          li
+                            a(href='/?tag=贡菊') 贡菊
+                          li
+                            a(href='/?tag=other') 正经文章
+            .row-fluid
+              .span8
+                block main
+                  - var articles = data.articles
+                  - if (articles.length !== 0)
+                      pre
+                        each article in articles
+                          .page-header
+                            h2
+                              a(href='/article?id=' + article.id) #{article.title}
+                              small 作者：#{article.author}
+                          - if (article.imgSrc)
+                            img(class='simpleImg', src=article.imgSrc)
+                          p #{article.simpleContent}
+                          p
+                            a.btn(href='/article?id=' + article.id) 查看原文
+                        ul.pager
+                          - if(articles.prev)
+                              li
+                                a(href='/?page=' + articles.prev) 上一页
+                          - if(articles.next)
+                              li
+                                a(href='/?page=' + articles.next) 下一页
+                  - else
+                      pre
+                        .page-header
+                          h2 居然一篇文章都没有，快去写一篇吧→                      
+
+              .span1
+              .span3
+                block right
+                  pre
+                    block userinfo
+                      - if (session.user)
+                        form.form-horizontal(action='logout')
+                          .row-fluid
+                            .span5
+                              span.label 欢迎您，#{session.user.name}
+                            .span3
+                              button.btn.btn-mini(id='logoutBtn',type='button') 退出
+                          .row-fluid
+                              a(href='uploadArticle')
+                                button.btn.btn-sm(type='button') 发布文章
+                      - else
+                        h4 登录
+                        form.form-horizontal(action='login',method='post')
+                          .control-group
+                            label.control-label(for='inputEmail') 邮箱
+                            .controls
+                              input(name='mail',id='inputEmail',type='text')
+                          .control-group
+                            label.control-label(for='inputPassword') 密码
+                            .controls
+                              input(name='pass',id='inputPassword',type='password')
+                          .row-fluid
+                            .span6
+                              input.btn(type='button',id='loginBtn',value = '登录')
+                            .span6
+                              a(href='register')
+                                input.btn(type='button',value='去注册')
+                  block tag
+                    ul.nav.nav-list.well
+                      li.nav-header 列表标题
+                      li
+                        a(href='/') 首页
+                      li
+                        a 假装是个标题
+                      li.nav-header 功能列表
+                      li
+                        a 假装有功能
+                      li
+                        a 其实没功能
+                      li.divider
+                      li
+                        a(href='about') 关于
+  
+    script(src='/javascripts/checkInfo.js')
+    script(src='/javascripts/checkPath.js')

@@ -1,0 +1,11 @@
+﻿extends layout
+block main
+  - var article = data.article
+    pre
+      .page-header
+        h2
+          a(href='/article?id=' + articleid) #{article.title}
+          small 作者：#{article.author}
+      div
+        :markdown
+        != article.content

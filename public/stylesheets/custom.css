@@ -1,0 +1,26 @@
+﻿.adapt{
+    width:100%;
+}
+textarea.adapt{
+    resize:none;
+}
+div,h1,h2,h3,h4,h5,li{
+    font-family:'微软雅黑','冬青黑体','黑体';
+}
+body{
+    padding:10px;
+    background-color:steelblue;
+}
+.form-horizontal .control-label{
+    width:100%;
+    text-align:left;
+}
+.form-horizontal .controls{
+    margin-left:0px;
+}
+form .hidden{
+    display:none;
+}
+.simpleImg{
+    height:200px;
+}
